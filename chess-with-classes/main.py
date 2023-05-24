@@ -1,9 +1,10 @@
-from board import *
+from chessboard import chessBoard
 
 def main():
     winner = None
     while winner is None:
-        pass
+        break
+    chessBoard().printBoard()
 
 if __name__ == '__main__':
     main()
