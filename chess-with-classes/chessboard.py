@@ -18,4 +18,4 @@ class chessBoard:
     def printBoard(self):
         for a in range(8):
             for b in range(8):
-                print(self.board[a][b])#, end = " ")
+                print(self.board[a][b], end = " ")
