@@ -25,12 +25,14 @@ class board:
         ]
 
     def assign_classes(self):
-        for i in range(2):
+        for i in range(8):
             for j in range(8):
                 if self.board[i][j] == "♟︎":
-                    self.board[i][j] = pawn
+                    p = pawn
+                    self.board[i][j] = p
+                    self.board[i][j].update_moves(self.board)
     
-    def printBoard(self):
+    def print_board(self):
         for a in range(8):
             print("")
             for b in range(8):
