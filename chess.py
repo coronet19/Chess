@@ -1,15 +1,17 @@
-import os     # spooky line frfr
+import os
 
-board = [["BR", "BN", "BB", "BQ", "BK", "BB", "BN", "BR"],
+board = [
+    ["BR", "BN", "BB", "BQ", "BK", "BB", "BN", "BR"],
     ["BP", "BP", "BP", "BP", "BP", "BP", "BP", "BP"],
     ["  ", "  ", "  ", "  ", "  ", "  ", "  ", "  "],
     ["  ", "  ", "  ", "  ", "  ", "  ", "  ", "  "],
     ["  ", "  ", "  ", "  ", "  ", "  ", "  ", "  "],
     ["  ", "  ", "  ", "  ", "  ", "  ", "  ", "  "],
     ["WP", "WP", "WP", "WP", "WP", "WP", "WP", "WP"],
-    ["WR", "WN", "WB", "WQ", "WK", "WB", "WN", "WR"]]
+    ["WR", "WN", "WB", "WQ", "WK", "WB", "WN", "WR"]
+]
 
-# test
+
 
 pieces = ("WP", "WR", "WN", "WB", "WK", "WQ", "BP", "BR", "BN", "BB", "BK", "BQ")
 white_pieces = ("WP", "WR", "WN", "WB", "WK", "WQ")
@@ -234,6 +236,7 @@ def is_killable(move):
             return True
     return False
 
+
 # checks movesets of pieces
 def is_valid(move, turn):
     global error_list
@@ -276,6 +279,7 @@ def is_valid(move, turn):
         elif piece == "BP":
             return black_pawn_moveset(move)
     return False
+
 
 def pawn_promotion():
     valid_promotions = ["rook", "knight", "bishop", "queen"]
@@ -373,7 +377,6 @@ def update_board(move, turn):
 
 
 # prints the board with notation
-# for black,
 def print_board(turn):
     if turn == "white":
         count = 9
@@ -414,7 +417,7 @@ def print_board(turn):
 # runs the program
 while True:
     try:
-        # checks for and promtoes pawns
+        # checks for and promotes pawns
         pawn_promotion()
 
         # draws the game if there are 4 repeated moves in a row
