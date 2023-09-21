@@ -242,42 +242,44 @@ def is_valid(move, turn):
     global error_list
     piece = get_piece(move[:2])
     if turn == "white":
-        if piece == "WR":
-            return rook_moveset(move)
-        elif piece == "WB":
-            return bishop_moveset(move)
-        elif piece == "WN":
-            return knight_moveset(move)
-        elif piece == "WQ":
-            if rook_moveset(move) is True or bishop_moveset(move) is True:
-                error_list = []
-                return True
-            else:
-                if "Invalid Move: Piece In Intended Location Is Not Killable" in error_list:
-                    error_list = ["Invalid Move: Piece In Intended Location Is Not Killable"]
-                elif "Invalid Move: Piece Collision Detected" in error_list:
-                    error_list = ["Invalid Move: Piece Collision Detected"]
-                elif "Invalid Move: Intended Location Not In Valid Piece Moveset" in error_list:
-                    error_list = ["Invalid Move: Intended Location Not In Valid Piece Moveset"]
-        elif piece == "WK":
-            return king_moveset(move)
-        elif piece == "WP":
-            return white_pawn_moveset(move)
+        match piece:
+            case "WR":
+                return rook_moveset(move)
+            case "WB":
+                return bishop_moveset(move)
+            case "WN":
+                return knight_moveset(move)
+            case "WQ":
+                if rook_moveset(move) or bishop_moveset(move):
+                    error_list = []
+                    return True
+                else:
+                    if "Invalid Move: Piece In Intended Location Is Not Killable" in error_list:
+                        error_list = ["Invalid Move: Piece In Intended Location Is Not Killable"]
+                    elif "Invalid Move: Piece Collision Detected" in error_list:
+                        error_list = ["Invalid Move: Piece Collision Detected"]
+                    elif "Invalid Move: Intended Location Not In Valid Piece Moveset" in error_list:
+                        error_list = ["Invalid Move: Intended Location Not In Valid Piece Moveset"]
+            case "WK":
+                return king_moveset(move)
+            case "WP":
+                return white_pawn_moveset(move)
     elif turn is "black":
-        if piece == "BR":
-            return rook_moveset(move)
-        elif piece == "BB":
-            return bishop_moveset(move)
-        elif piece == "BN":
-            return knight_moveset(move)
-        elif piece == "BQ":
-            if rook_moveset(move) is True or bishop_moveset(move) is True:
-                error_list = []
-                return True
-        elif piece == "BK":
-            return king_moveset(move)
-        elif piece == "BP":
-            return black_pawn_moveset(move)
+        match piece:
+            case "BR":
+                return rook_moveset(move)
+            case "BB":
+                return bishop_moveset(move)
+            case "BN":
+                return knight_moveset(move)
+            case "BQ":
+                if rook_moveset(move) or bishop_moveset(move):
+                    error_list = []
+                    return True
+            case "BK":
+                return king_moveset(move)
+            case "BP":
+                return black_pawn_moveset(move)
     return False
 
 
