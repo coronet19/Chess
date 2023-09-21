@@ -218,7 +218,7 @@ def castle_availability(move, turn):
 def reverse_alpha_index(letter):
     return ord(letter) - 65
 
-# converts tile rank to a board parent index
+# converts tile rank to a board column index
 def reverse_int_index(number):
     return abs(int(number) - 8)
 
